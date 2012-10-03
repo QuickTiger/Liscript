@@ -1,4 +1,4 @@
 Liscript
 ========
 
-Some Script intended for using Linux with more CONVENIENCE and EFFICIENCY
+Some Scripts intended for using Linux with more CONVENIENCE and EFFICIENCY
