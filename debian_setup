@@ -1,0 +1,33 @@
+ubuntu添加BT5软件源
+
+作者：sasa 发布于：2012-5-26 20:31 Saturday 分类：攻防工具
+如果你已经有bt5的源，如下面的：
+deb http://mirrors.ustc.edu.cn/backtrack/source revolution main microverse non-free testing
+
+deb http://mirrors.ustc.edu.cn/backtrack/all revolution main microverse non-free testing
+
+deb http://mirrors.ustc.edu.cn/backtrack/32 revolution main microverse non-free testing
+
+那么，
+sudo gedit /etc/apt/sources.list
+把上面的源加进去保存，然后：
+sudo apt-get update
+结果最后，终端内最后会提示有错误，如下：
+ 
+ W: GPG签名验证错误： http://mirrors.ustc.edu.cn revolution Release: 由于没有公钥，无法验证下列签名： NO_PUBKEY AB6DA34B475A6B7F
+ W: GPG签名验证错误： http://mirrors.ustc.edu.cn revolution Release: 由于没有公钥，无法验证下列签名： NO_PUBKEY AB6DA34B475A6B7F
+ W: GPG签名验证错误： http://mirrors.ustc.edu.cn revolution Release: 由于没有公钥，无法验证下列签名： NO_PUBKEY AB6DA34B475A6B7F
+ W: 无法下载 http://mirrors.ustc.edu.cn/backtrack/so ... ckages.bz2 子进程 /bin/bzip2 返回了一个错误号 (2)
+  
+  错误告诉你没有公钥 NO_PUBKEY AB6DA34B475A6B7F，后八位475A6B7F就是密匙。
+
+  那么，终端输入如下：
+  sudo gpg --keyserver subkeys.pgp.net --recv 475A6B7F
+  结果会显示：
+  gpg: 密钥 475A6B7F：公钥“BackTrack Repository Admin <emgent@backtrack-linux.org>”已导入
+  gpg: 合计被处理的数量：1
+  gpg: 已导入：1
+   
+   然后，继续，终端如下：
+   sudo gpg --export --armor 475A6B7F | sudo apt-key add -
+
