@@ -1,6 +1,5 @@
 ubuntu添加BT5软件源
 
-作者：sasa 发布于：2012-5-26 20:31 Saturday 分类：攻防工具
 如果你已经有bt5的源，如下面的：
 deb http://mirrors.ustc.edu.cn/backtrack/source revolution main microverse non-free testing
 
